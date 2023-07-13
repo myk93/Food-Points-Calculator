@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>מחשבון נקודות</title>
+    <style>
+        h1{text-align: center;}
+    </style>
+    <script>
+        function calculate() {
+            var a = parseFloat(document.getElementById('פחמימות').value);
+            var b = parseFloat(document.getElementById('שומנים').value);
+            var d = parseFloat(document.getElementById('סיבים_תזונתיים').value);
+            var c = parseFloat(document.getElementById('חלבונים').value);
+            var e = parseFloat(document.getElementById('ל100_גרם').value);
+            
+            var result = ((b * 26 + a * 11 + 9 * c - 8 * d) / 100) * (e / 100);
+            var roundedResult = Math.floor(result);
+            var sub =result - Math.floor(result);
+            if (sub >= 0 && sub <0.25 ) {
+                document.getElementById('output').textContent = roundedResult;
+            } 
+            else if (sub >= 0.5 && sub <=0.75 ){
+                document.getElementById('output').textContent = roundedResult +0.5;
+            }
+            else{
+                document.getElementById('output').textContent = roundedResult +1;
+            }
+            
+        }
+    </script>
+</head>
+<body align="center">
+    <style>
+
+        div {
+            display: block;
+        }
+    </style>
+    
+    <h1>מחשבון נקודות</h1>
+    <div >
+        <label for="פחמימות">פחמימות:</label><br>
+        <input type="number" id="פחמימות" ><br><br>
+        <label for="שומנים">שומנים:</label><br>
+        <input type="number" id="שומנים" ><br><br>
+
+        <label for="סיבים_תזונתיים">סיבים_תזונתיים:</label><br>
+        <input type="number" id="סיבים_תזונתיים" ><br><br>
+
+        <label for="חלבונים">חלבונים:</label><br><br>
+        <input type="number" id="חלבונים" ><br><br>
+
+        <label for="ל100_גרם"> גרם:</label><br>
+        <input type="number" id="ל100_גרם" value="100"><br><br>
+        <button onclick="calculate()">Calculate</button><br><br>
+    
+        <label for="output">Result:</label>
+        <span id="output"></span>
+
+
+</body>
+
+</html>
